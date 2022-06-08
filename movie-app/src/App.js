@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./Components/Header/Header.js";
 import SimpleBottomNavigation from "./Components/MainNav";
 import { Container } from "@mui/system";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Trending from "./Pages/Trending/Trending";
 import Movies from "./Pages/Movies/Movies";
 import Series from "./Pages/Series/Series";
@@ -11,7 +11,7 @@ import Search from "./Pages/Search/Search";
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <Router>
         <Header />
         <div className="App">
           <Container>
@@ -22,9 +22,9 @@ function App() {
               <Route path="/search" component={Search} />
             </Switch>
           </Container>
-          <SimpleBottomNavigation></SimpleBottomNavigation>
         </div>
-      </BrowserRouter>
+        <SimpleBottomNavigation></SimpleBottomNavigation>
+      </Router>
     </>
   );
 }
