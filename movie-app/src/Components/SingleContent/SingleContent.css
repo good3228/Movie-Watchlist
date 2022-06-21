@@ -29,8 +29,11 @@ b.title{
     margin:5px 0;
     text-align: center;
 }
-span.sunTitle{
+
+span.subTitle{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 0 2px;
+    padding-bottom: 3px;
 }
