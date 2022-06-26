@@ -37,8 +37,8 @@ const Trending = () => {
               vote_average={c.vote_average}
             />
           ))}
+        <CustomPagination setPage={setPage}></CustomPagination>
       </div>
-      <CustomPagination setPage = {setPage}></CustomPagination>
     </div>
   );
 };
