@@ -2,40 +2,44 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import SingleContent from "../../Components/SingleContent/SingleContent";
 import CustomPagination from "../../Components/Pagination/CustomPagination";
-import { Chip, Stack } from "@mui/material";
+import useGenre from '../../hooks/useGenre';
 import Genres from "../../Components/SingleContent/Genre";
 
-export const Movies = () => {
+
+const Movies = () => {
+  const [genres, setGenres] = useState([]);
+  const [selectedGenres, setSelectedGenres] = useState([]);
   const [page, setPage] = useState(1);
   const [content, setContent] = useState([]);
   const [numOfPages, setNumOfPages] = useState();
-  const [selectedGenres, setSelectedGenres] = useState([]);
-  const [genres, setGenres] = useState([]);
+  const genreforURL = useGenre(selectedGenres);
+  // console.log(selectedGenres);
 
   const fetchMovies = async () => {
-    const { data } = await axios.get(`
-https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`);
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreforURL}`
+    );
     setContent(data.results);
     setNumOfPages(data.total_pages);
-    console.log(data.results);
   };
 
   useEffect(() => {
+    window.scroll(0, 0);
     fetchMovies();
-  }, [page]);
+    // eslint-disable-next-line
+  }, [genreforURL, page]);
 
   return (
     <div>
+      <span className="pageTitle">Discover Movies</span>
       <Genres
-        type="Movie"
-        setPage={setPage}
+        type="movie"
         selectedGenres={selectedGenres}
         setSelectedGenres={setSelectedGenres}
-        setGenres = {setGenres}
         genres={genres}
+        setGenres={setGenres}
+        setPage={setPage}
       />
-
-      <span className="pageTitle">Movies</span>
       <div className="trending">
         {content &&
           content.map((c) => (
@@ -49,14 +53,12 @@ https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_
               vote_average={c.vote_average}
             />
           ))}
-        {numOfPages > 1 && (
-          <CustomPagination
-            setPage={setPage}
-            numOfPages={numOfPages}
-          ></CustomPagination>
-        )}
       </div>
+      {numOfPages > 1 && (
+        <CustomPagination setPage={setPage} numOfPages={numOfPages} />
+      )}
     </div>
   );
 };
+
 export default Movies;
