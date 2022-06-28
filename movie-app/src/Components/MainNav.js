@@ -20,15 +20,15 @@ const useStyles = makeStyles({
 
 export default function SimpleBottomNavigation() {
   const [value, setValue] = useState(0);
-
+  const classes = useStyles();
   const history = useHistory();
+  
   useEffect(() => {
     if (value === 0) history.push("/");
     else if (value === 1) history.push("/movies");
     else if (value === 2) history.push("/series");
     else if (value === 3) history.push("/search");
   }, [value, history]);
-  const classes = useStyles();
 
   return (
     <BottomNavigation

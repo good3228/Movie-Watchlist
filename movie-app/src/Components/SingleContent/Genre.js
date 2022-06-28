@@ -42,6 +42,7 @@ const Genres = ({
 
   return (
     <div style={{ padding: "6px 0" }}>
+      {console.log(typeof selectedGenres)}
       {selectedGenres.map((genre) => (
         <Chip
           style={{ margin: 2 }}

@@ -1,10 +1,13 @@
 import { createTheme, Pagination } from "@mui/material";
 import React from "react";
-import { ThemeProvider } from "@mui/styles";
+import { ThemeProvider } from "@mui/material/styles";
 
 const darkTheme = createTheme({
   palette: {
     type: "dark",
+    primary: {
+      main: "#fff",
+    },
   },
 });
 
