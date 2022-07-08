@@ -7,14 +7,13 @@ import axios from "axios";
 import "./ContentModal.css";
 import { Button } from "@material-ui/core";
 import YouTubeIcon from "@material-ui/icons/YouTube";
-
+import Carousel from "../Carousel/Carousel";
 import {
   img_500,
   unavailable,
   unavailableLandscape,
 } from "../../config/config";
-
-const useStyles = (theme) => ({
+const useStyles = makeStyles((theme) => ({
   modal: {
     display: "flex",
     alignItems: "center",
@@ -30,9 +29,10 @@ const useStyles = (theme) => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(1, 1, 3),
   },
-});
+}));
 
 export default function TransitionsModal({ children, media_type, id }) {
+  const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [content, setContent] = useState();
   const [video, setVideo] = useState();
@@ -81,6 +81,7 @@ export default function TransitionsModal({ children, media_type, id }) {
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
+        className={classes.modal}
         open={open}
         onClose={handleClose}
         closeAfterTransition
@@ -89,9 +90,9 @@ export default function TransitionsModal({ children, media_type, id }) {
           timeout: 500,
         }}
       >
-        <Fade in={open} className="fade">
+        <Fade in={open}>
           {content && (
-            <div>
+            <div className={classes.paper}>
               <div className="ContentModal">
                 <img
                   src={
@@ -129,14 +130,14 @@ export default function TransitionsModal({ children, media_type, id }) {
                     {content.overview}
                   </span>
 
+                  <div>
+                    <Carousel id={id} media_type={media_type} />
+                  </div>
+
                   <Button
                     variant="contained"
                     startIcon={<YouTubeIcon />}
                     color="secondary"
-                    style={{
-                      backgroundColor: " #c4302b",
-                      fontSize: " 1.2rem",
-                    }}
                     target="__blank"
                     href={`https://www.youtube.com/watch?v=${video}`}
                   >

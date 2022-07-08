@@ -13,7 +13,7 @@ const darkTheme = createTheme({
   },
 });
 
-const CustomPagination = ({ setPage, numOfPages = 10 }) => {
+export default function CustomPagination({ setPage, numOfPages = 10 }){
   const handlePageChange = (page) => {
     setPage(page);
     window.scroll(0, 0);
@@ -44,4 +44,4 @@ const CustomPagination = ({ setPage, numOfPages = 10 }) => {
   );
 };
 
-export default CustomPagination;
+
