@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Genres from "../../Components/SingleContent/Genre";
-import SingleContent from "../../Components/SingleContent/SingleContent";
-import CustomPagination from "../../Components/Pagination/CustomPagination";
+import Genres from "../../components/SingleContent/Genres";
+import SingleContent from "../../components/SingleContent/SingleContent";
+import CustomPagination from "../../components/Pagination/CustomPagination";
 import useGenre from "../../hooks/useGenre";
 
 
@@ -31,7 +31,6 @@ const Series = () => {
 
   return (
     <div>
-      <span className="pageTitle">Discover Series</span>
       <Genres
         type="tv"
         selectedGenres={selectedGenres}

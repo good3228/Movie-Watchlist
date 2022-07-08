@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import BottomNavigation from "@mui/material/BottomNavigation";
-import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import WhatshotIcon from "@mui/icons-material/Whatshot";
-import MovieIcon from "@mui/icons-material/Movie";
-import TvIcon from "@mui/icons-material/Tv";
-import SearchIcon from "@mui/icons-material/Search";
-import { makeStyles } from "@mui/styles";
+import React, { useEffect, useState} from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import BottomNavigation from "@material-ui/core/BottomNavigation";
+import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+import TvIcon from "@material-ui/icons/Tv";
+import MovieIcon from "@material-ui/icons/Movie";
+import SearchIcon from "@material-ui/icons/Search";
+import WhatshotIcon from "@material-ui/icons/Whatshot";
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
@@ -22,7 +22,7 @@ export default function SimpleBottomNavigation() {
   const [value, setValue] = useState(0);
   const classes = useStyles();
   const history = useHistory();
-  
+
   useEffect(() => {
     if (value === 0) history.push("/");
     else if (value === 1) history.push("/movies");

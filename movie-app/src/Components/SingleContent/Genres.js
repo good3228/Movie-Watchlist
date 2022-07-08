@@ -1,4 +1,4 @@
-import { Chip } from "@mui/material";
+import { Chip } from "@material-ui/core";
 import axios from "axios";
 import { useEffect } from "react";
 
@@ -42,7 +42,6 @@ const Genres = ({
 
   return (
     <div style={{ padding: "6px 0" }}>
-      {console.log(typeof selectedGenres)}
       {selectedGenres.map((genre) => (
         <Chip
           style={{ margin: 2 }}

@@ -1,9 +1,9 @@
 import React from "react";
 import axios from "axios";
-import { useState } from "react";
-import { useEffect } from "react";
-import SingleContent from "../../Components/SingleContent/SingleContent";
-import CustomPagination from "../../Components/Pagination/CustomPagination";
+import { useState, useEffect} from "react";
+
+import SingleContent from "../../components/SingleContent/SingleContent";
+import CustomPagination from "../../components/Pagination/CustomPagination";
 import "./Trending.css";
 
 const Trending = () => {
@@ -18,7 +18,9 @@ const Trending = () => {
   };
 
   useEffect(() => {
+    window.scroll(0, 0);
     fetchTrending();
+    // eslint-disable-next-line
   }, [page]);
 
   return (

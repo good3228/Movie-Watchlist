@@ -1,11 +1,16 @@
-import { Button, Tab, Tabs, TextField } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
-import React, { useState, useEffect } from "react";
-import { createTheme } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+import {
+  Button,
+  Tab,
+  Tabs,
+  TextField,
+  ThemeProvider,
+} from "@material-ui/core";
+import { createTheme } from "@material-ui/core/styles";
+import SearchIcon from "@material-ui/icons/Search";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import SingleContent from "../../Components/SingleContent/SingleContent";
-import CustomPagination from "../../Components/Pagination/CustomPagination";
+import CustomPagination from "../../components/Pagination/CustomPagination";
+import SingleContent from "../../components/SingleContent/SingleContent";
 
 export const Search = () => {
   const [type, setType] = useState(0);
@@ -35,7 +40,6 @@ export const Search = () => {
 
   useEffect(() => {
     window.scroll(0, 0);
-    fetchSearch();
     setPage(1);
   }, [page, type]);
 
@@ -50,7 +54,11 @@ export const Search = () => {
             variant="filled"
             onChange={(e) => setSearchText(e.target.value)}
           ></TextField>
-          <Button variant="contained" style={{ marginLeft: 10 }} onClick = {fetchSearch}>
+          <Button
+            variant="contained"
+            style={{ marginLeft: 10 }}
+            onClick={fetchSearch}
+          >
             <SearchIcon />
           </Button>
         </div>
